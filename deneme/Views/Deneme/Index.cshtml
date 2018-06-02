@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div> 
+        
+            kullanıcı adı:<input id="username" type="text" name="username" value="" />
+            sifre:<input id="sifre" type="password" name="name" value="" />
+            <input id="gonder" type="submit" name="login" value="tamam" />
+        
+    </div>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Content/jquery.cookie.js"></script>
+    <script>
+
+        $("#gonder").bind('click', function () {
+            GirisYap();
+        })
+        function GirisYap() {
+            $.ajax({
+                method: 'post',
+                url: '/Deneme/IsLogin',
+                data: { username: $("#username").val(), passaport: $("#sifre").val() },
+                success: function (d) {
+                    console.log(d);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
